@@ -2,6 +2,17 @@ from textures import *
 from window import *
 from allclass.shooter import *
 from gameKeydown import *
+from textures import *
+
+"""
+entity:
+0 = shooter
+1 = bullets
+2 = enemys
+3 = enemyBullets
+"""
+entity = [[], []]
+dim = None
 
 def gameLoop(window, pygame):
 
@@ -11,17 +22,19 @@ def gameLoop(window, pygame):
         RED = ( 255, 0, 0)
 
         #shooter_texture = load_shooter(pygame)
-
-        dim = get_size_window()
-        shooter = Shooter(dim, window, pygame)
+        shooter = Shooter(dim, pygame)
         
+
+
+        bullet = load_texture(pygame, '../img/enemyBullet.png')
+
+
+
+
         window.blit(shooter.texture, (shooter.x, shooter.y))
 
         # The clock will be used to control how fast the screen updates
         clock = pygame.time.Clock()
-
-        
-        
 
         # The loop will carry on until the user exit the game (e.g. clicks the close button).
         quit = False
@@ -34,13 +47,13 @@ def gameLoop(window, pygame):
                                 exit(0)
                         else:
                                 game_keydown(pygame, event, shooter, window)
-                shooter.move(window)
+                shooter.move()
 
                 # --- Game logic should go here
                 # --- Drawing code should go here
                 window.fill(BLACK)
                 window.blit(shooter.texture, (shooter.x, shooter.y))
-
+                window.blit(bullet, (50, 50))
                 #window.blit(shooter_texture, (shooter.x, shooter.y))
                 
                 #pygame.time.wait(1)
