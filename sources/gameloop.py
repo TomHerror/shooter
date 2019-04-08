@@ -3,6 +3,8 @@ from window import *
 from allclass.shooter import *
 from gameKeydown import *
 from textures import *
+from draw import *
+
 
 """
 entity:
@@ -47,18 +49,20 @@ def gameLoop(window, pygame):
                                 exit(0)
                         else:
                                 game_keydown(pygame, event, shooter, window)
-                shooter.move()
+                
+                shooter.move(5)
 
                 # --- Game logic should go here
                 # --- Drawing code should go here
                 window.fill(BLACK)
-                window.blit(shooter.texture, (shooter.x, shooter.y))
-                window.blit(bullet, (50, 50))
+                #window.blit(shooter.texture, (shooter.x, shooter.y))
+                #window.blit(bullet, (50, 50))
                 #window.blit(shooter_texture, (shooter.x, shooter.y))
-                
+                #shooter.draw(window)
+                draw_all(window, pygame)
                 #pygame.time.wait(1)
                 # --- Go ahead and update the screen with what we've drawn.
                 pygame.display.flip()
-
+                #pygame.time.delay(500)
                 # --- Limit to 60 frames per second
                 clock.tick(100)
