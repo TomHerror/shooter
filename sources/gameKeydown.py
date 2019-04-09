@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from allclass.shooter import *
+from allclass.enemy import *
 
 def game_keydown(pygame, event, shooter, window):
 
@@ -20,6 +21,8 @@ def game_keydown(pygame, event, shooter, window):
         elif event.key == K_s:
             shooter.delay[0] += 1
             print(shooter.delay[0])
+        elif event.key == K_z:
+            enemy = Enemy(pygame)
     elif event.type == pygame.KEYUP:
         if event.key == K_LEFT: shooter.left = False
         elif event.key == K_RIGHT: shooter.right = False

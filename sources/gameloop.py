@@ -13,7 +13,7 @@ entity:
 2 = enemys
 3 = enemyBullets
 """
-entity = [[], []]
+entity = [[], [], []]
 dim = None
 
 def gameLoop(window, pygame):
@@ -25,8 +25,6 @@ def gameLoop(window, pygame):
 
         #shooter_texture = load_shooter(pygame)
         shooter = Shooter(dim, pygame)
-        
-
 
         bullet = load_texture(pygame, '../img/enemyBullet.png')
 
